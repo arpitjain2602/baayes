@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'baayes',         # How you named your package folder (MyLib)
   packages = ['baayes'],   # Chose the same as "name"
-  version = '0.1.3',      # Start with a small number and increase it with every change you make
+  version = '0.1.4',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Bayesian Optimization',   # Give a short description about your library
   author = 'Arpit Jain',                   # Type in your name
@@ -12,7 +12,7 @@ setup(
   keywords = ['Bayesian'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'pandas',
-          'numpy','scikit-learn==0.22.1','hyperopt==0.2.3','lightgbm','imblearn==0.5.0','xgboost==0.90'
+          'numpy','scikit-learn==0.22.1','hyperopt==0.2.3','lightgbm','imbalanced-learn==0.8.0','xgboost==0.90'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
