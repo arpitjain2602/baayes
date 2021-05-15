@@ -12,7 +12,7 @@ setup(
   keywords = ['Bayesian'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'pandas',
-          'numpy','scikit-learn==0.22.1','hyperopt==0.2.3','lightgbm','imbalanced-learn==0.8.0','xgboost==0.90'
+          'numpy','scikit-learn==0.22.1','hyperopt==0.2.3','lightgbm','xgboost==0.90'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package

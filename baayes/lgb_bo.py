@@ -15,7 +15,7 @@ from hyperopt import fmin
 tpe_algorithm = tpe.suggest
 import lightgbm as lgb
 import numpy as np
-from imblearn.over_sampling import SMOTE
+# from imblearn.over_sampling import SMOTE
 from helpers import *
 
 # from PARAMETERS import *

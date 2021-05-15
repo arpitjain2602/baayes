@@ -14,7 +14,7 @@ tpe_algorithm = tpe.suggest
 from sklearn.ensemble import RandomForestClassifier
 import lightgbm as lgb
 import numpy as np
-from imblearn.over_sampling import SMOTE
+# from imblearn.over_sampling import SMOTE
 
 # def metric_am(y_true, y_pred):
 #     return 0.8*recall_score(y_true, y_pred) + 0.2*precision_score(y_true, y_pred)

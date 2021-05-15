@@ -14,9 +14,9 @@ def cross_val_fit(model, X, y, N_FOLDS, cross_val, apply_smote, test_size, metri
 		cv = KFold(n_splits=N_FOLDS,shuffle=True, random_state=0)
 		for train_index, test_index in cv.split(X):
 			X_train, X_test, y_train, y_test = X[train_index], X[test_index], y[train_index], y[test_index]
-			if apply_smote:
-				sm = SMOTE(random_state=42)
-				X_train, y_train = sm.fit_resample(X_train, y_train)
+			# if apply_smote:
+			# 	sm = SMOTE(random_state=42)
+			# 	X_train, y_train = sm.fit_resample(X_train, y_train)
 
 			model.fit(X_train, y_train)
 			y_pred = model.predict(X_test)

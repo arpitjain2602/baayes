@@ -9,7 +9,7 @@ from xgb_bo import *
 from lgb_bo import *
 import pickle
 from sklearn.metrics import recall_score, precision_score, accuracy_score, f1_score
-from imblearn.over_sampling import SMOTE
+# from imblearn.over_sampling import SMOTE
 from sklearn.metrics import make_scorer
 import pandas as pd
 import ast

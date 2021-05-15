@@ -14,7 +14,7 @@ tpe_algorithm = tpe.suggest
 from xgboost import XGBClassifier
 import lightgbm as lgb
 import numpy as np
-from imblearn.over_sampling import SMOTE
+# from imblearn.over_sampling import SMOTE
 from helpers import *
 # from PARAMETERS import *
 
