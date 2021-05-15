@@ -17,7 +17,7 @@ import lightgbm as lgb
 import numpy as np
 # from imblearn.over_sampling import SMOTE
 from helpers import *
-
+help_ = helpers()
 
 class lgb_bo():
 
@@ -94,7 +94,7 @@ class lgb_bo():
 
 	    # self.score = self.model_temp.fit(X, y, self.N_FOLDS)
 	    # self.score_am, self.score_recall, self.score_precision = self.cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS, self.apply_smote)
-	    self.results_dict = cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS, self.cross_val, self.apply_smote, self.test_size, self.metric)
+	    self.results_dict = help_.cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS, self.cross_val, self.apply_smote, self.test_size, self.metric)
 	    
 	    # Loss must be minimized
 	    loss = 1-self.results_dict['metric_am_test']

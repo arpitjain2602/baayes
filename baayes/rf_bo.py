@@ -20,6 +20,7 @@ import numpy as np
 #     return 0.8*recall_score(y_true, y_pred) + 0.2*precision_score(y_true, y_pred)
 
 from helpers import *
+help_ = helpers()
 
 class rf_bo():
 
@@ -115,7 +116,7 @@ class rf_bo():
 	    # self.score = self.model_temp.fit(X, y, self.N_FOLDS)
 	    # self.score_am, self.score_recall, self.score_precision = self.cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS)
 
-	    self.results_dict = cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS, self.cross_val, self.apply_smote, self.test_size, self.metric)
+	    self.results_dict = help_.cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS, self.cross_val, self.apply_smote, self.test_size, self.metric)
 	    # Extract the best score
 	#     best_score = np.max(cv_results['auc-mean'])
 	    
