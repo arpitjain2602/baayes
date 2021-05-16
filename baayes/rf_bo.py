@@ -19,7 +19,7 @@ import numpy as np
 # def metric_am(y_true, y_pred):
 #     return 0.8*recall_score(y_true, y_pred) + 0.2*precision_score(y_true, y_pred)
 
-# from helpers import *
+from baayes.helpers import *
 # help_ = helpers()
 
 class rf_bo():
@@ -116,7 +116,7 @@ class rf_bo():
 	    # self.score = self.model_temp.fit(X, y, self.N_FOLDS)
 	    # self.score_am, self.score_recall, self.score_precision = self.cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS)
 
-	    self.results_dict = help_.cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS, self.cross_val, self.apply_smote, self.test_size, self.metric)
+	    self.results_dict = cross_val_fit(self.model_temp, self.X, self.y, self.N_FOLDS, self.cross_val, self.apply_smote, self.test_size, self.metric)
 	    # Extract the best score
 	#     best_score = np.max(cv_results['auc-mean'])
 	    
@@ -139,48 +139,6 @@ class rf_bo():
 	#     return {'loss': loss, 'params': params, 'iteration': ITERATION,
 	#             'estimators': n_estimators, 
 	#             'train_time': run_time, 'status': STATUS_OK}
-
-	def cross_val_fit(self, model, X, y, N_FOLDS, cross_val, apply_smote, test_size, metric):
-		if metric=='accuracy':
-			metric_am = accuracy_score
-		elif metric=='f1_score':
-			metric_am = f1_score
-		elif metric=='precision':
-			metric_am = precision_score
-		scores_am, scores_am_train = [], []
-
-		if cross_val=='k_fold':
-			cv = KFold(n_splits=N_FOLDS,shuffle=True, random_state=0)
-			for train_index, test_index in cv.split(X):
-				X_train, X_test, y_train, y_test = X[train_index], X[test_index], y[train_index], y[test_index]
-				# if apply_smote:
-				# 	sm = SMOTE(random_state=42)
-				# 	X_train, y_train = sm.fit_resample(X_train, y_train)
-
-				model.fit(X_train, y_train)
-				y_pred = model.predict(X_test)
-				y_pred_train = model.predict(X_train)
-
-				scores_am.append(metric_am(y_test, y_pred))
-				scores_am_train.append(metric_am(y_train, y_pred_train))
-
-			return { 
-			'metric_am_train':sum(scores_am_train)/N_FOLDS,
-			'metric_am_test':sum(scores_am)/N_FOLDS,
-			}
-
-		if cross_val=='train_test':
-			X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42)
-			model.fit(X_train, y_train)
-			y_pred = model.predict(X_test)
-			y_pred_train = model.predict(X_train)
-
-			scores_am.append(metric_am(y_test, y_pred))
-			scores_am_train.append(metric_am(y_train, y_pred_train))
-			return { 
-			'metric_am_train':scores_am_train[0],
-			'metric_am_test':scores_am[0],
-			}
 
 	def run_model(self, path):
 		# File to save first results
